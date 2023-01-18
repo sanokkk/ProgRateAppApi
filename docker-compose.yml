@@ -1,0 +1,33 @@
+version: '3.4'
+
+networks:
+  antohertestnetwork:
+
+
+services:
+  antoherdb:
+    container_name: antoherDb
+    image: mysql:8.0
+    restart: always
+    environment:
+     - MYSQL_ROOT_PASSWORD=1111
+    networks:
+     - antohertestnetwork
+
+
+  antoher:
+    container_name: antohertestDocker
+    image: ${DOCKER_REGISTRY-}antoher
+    build:
+      context: .
+      dockerfile: Antoher/Dockerfile
+    ports:
+      - 8080:80
+    depends_on:
+      - antoherdb
+    environment:
+      - host=antoherdb
+      - MYSQL_ROOT_PASSWORD=1111
+      - database=antoher
+    networks:
+     - antohertestnetwork
