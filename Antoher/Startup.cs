@@ -117,7 +117,11 @@ namespace Antoher
             app.UseAuthorization();
 
             #region для клиента Андрея
+
             app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().WithOrigins("http://localhost:3000").AllowCredentials());
+
+            //app.UseCors(builder => builder.WithOrigins("url клиента из json").AllowAnyHeader().AllowAnyMethod());
+
             #endregion
 
             app.UseEndpoints(endpoints =>
