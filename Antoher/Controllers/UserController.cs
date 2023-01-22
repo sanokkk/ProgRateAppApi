@@ -86,7 +86,7 @@ namespace Antoher.Controllers
                     {
                         new Claim("UserID", user.Id.ToString())
                     }),
-                    Expires = DateTime.UtcNow.AddMinutes(30),
+                    Expires = DateTime.UtcNow.AddHours(12),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1234567890123456")), SecurityAlgorithms.HmacSha256Signature)
                 };
                 var tokenHandler = new JwtSecurityTokenHandler();
