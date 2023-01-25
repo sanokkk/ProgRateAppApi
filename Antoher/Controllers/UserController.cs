@@ -53,6 +53,28 @@ namespace Antoher.Controllers
             return BadRequest();
         }
 
+
+        [HttpGet]
+        [Route("GetUserById")]
+        public async Task<IActionResult> GetUserById([FromQuery] string Id)
+        {
+            var user = await _userManager.FindByIdAsync(Id);
+            if (user is null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                var userDto = new GetUserDto()
+                {
+                    Email = user.Email,
+                    FullName = user.FullName,
+                    UserName = user.UserName
+                };
+                return Ok(userDto);
+            }
+        }
+
         [HttpGet]
         [Authorize]
         [Route("GetUser")]
