@@ -24,9 +24,8 @@ namespace Antoher.Controllers
             _signInManager = signInManager;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         [Route("GetPostComments")]
-        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> GetPostComments([FromQuery]int postId)
         {
             var comments = await _db.SelectPostCommentsAsync(postId);
