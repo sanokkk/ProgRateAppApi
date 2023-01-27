@@ -2,6 +2,7 @@
 using Antoher.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Antoher.DAL.Repos
@@ -36,6 +37,12 @@ namespace Antoher.DAL.Repos
         public Task<List<Post>> SelectAsync()
         {
             var posts = _db.posts.ToListAsync();
+            return posts;
+        }
+
+        public async Task<List<Post>> SelectUserPostsAsync(string userId)
+        {
+            var posts = await _db.posts.Where(x => x.userId == userId).ToListAsync();
             return posts;
         }
 

@@ -89,6 +89,14 @@ namespace Antoher.Controllers
             return NoContent();
         }
 
+        [HttpGet]
+        [Route("SelectUserPosts")]
+        public async Task<IActionResult> GetUserPost(string userId)
+        {
+            var posts = await _post.SelectUserPostsAsync(userId);
+            return Ok(posts);
+        }
+
 
     }
 }

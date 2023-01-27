@@ -7,5 +7,6 @@ namespace Antoher.DAL.Interfaces
     public interface IPostRepo: IRepo<Post>
     {
         Task<List<Post>> SelectAsync();
+        Task<List<Post>> SelectUserPostsAsync(string userId);
     }
 }
