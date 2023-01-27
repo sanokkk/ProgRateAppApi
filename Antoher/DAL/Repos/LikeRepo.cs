@@ -32,6 +32,15 @@ namespace Antoher.DAL.Repos
             throw new System.NotImplementedException();
         }
 
+        public async Task<bool> IsLikedAsync(int postId, string userId)
+        {
+            var like = await _db.likes.FirstOrDefaultAsync(x => x.postId == postId && x.userId == userId);
+            if (like is null)
+                return false;
+            else 
+                return true;
+        }
+
         public Task UpdateAsync(Like entity)
         {
             throw new System.NotImplementedException();

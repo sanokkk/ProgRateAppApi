@@ -80,6 +80,17 @@ namespace Antoher.Controllers
             }
             
         }
+
+
+        [HttpGet]
+        [Route("IsLiked")]
+        [Authorize]
+        public async Task<IActionResult> IsLiked([FromQuery] int postId)
+        {
+            var userId = User.Claims.First(x => x.Type == "UserID").Value;
+            var checker = await _likes.IsLikedAsync(postId, userId);
+            return Ok(checker);
+        }
     }
 
 
