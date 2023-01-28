@@ -41,10 +41,10 @@ namespace Antoher.Controllers
             {
                 //вытягиваем юзера
                 var userId = User.Claims.First(x => x.Type == "UserID").Value;
-                var user = _userManager.FindByIdAsync(userId);
+                var user = await _userManager.FindByIdAsync(userId);
 
                 //вытягиваем пост
-                var post = _db.GetAsync(postId);
+                var post = await _db.GetAsync(postId);
 
                 //проверяем, есть ли такой пост
                 if (post == null)
