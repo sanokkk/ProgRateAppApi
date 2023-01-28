@@ -36,6 +36,18 @@ namespace Antoher.Controllers
             return Ok(response);
         }
 
+
+        [HttpGet]
+        [Route("SelectById")]
+        public async Task<IActionResult> SelectPostById([FromQuery] int postId)
+        {
+            var post = await _post.SelectPostByIdAsync(postId);
+            if (post is null)
+                return BadRequest();
+            else
+                return Ok(post);
+        }
+
         [Route("Select")]
         [HttpGet]
         [Authorize]
