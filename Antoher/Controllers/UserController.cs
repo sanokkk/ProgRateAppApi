@@ -89,7 +89,8 @@ namespace Antoher.Controllers
             {
                 UserName = user.UserName,
                 FullName = user.FullName,
-                Email = user.Email
+                Email = user.Email,
+                userId = user.Id
             };
             return Ok(getUser);
         }
