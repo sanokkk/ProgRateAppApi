@@ -38,6 +38,7 @@ namespace Antoher.Controllers
             response.Reverse();
 
             int divider = 20;
+            
             var pages = response.Chunk(divider).ToList();
             var resultPage = pages[pageNum - 1].ToList();
 
@@ -48,6 +49,15 @@ namespace Antoher.Controllers
             };
 
             return Ok(pageDto);
+        }
+
+
+        [HttpGet]
+        [Route("SelectByTitle")]
+        public async Task<IActionResult> SelectByTitle([FromQuery] string querry)
+        {
+            var posts = await _post.SelectByTitleAsync(querry);
+            return Ok(posts);
         }
 
 

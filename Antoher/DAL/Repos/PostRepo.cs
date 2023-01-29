@@ -40,6 +40,12 @@ namespace Antoher.DAL.Repos
             return posts;
         }
 
+        public async Task<List<Post>> SelectByTitleAsync(string title)
+        {
+            var posts = await _db.posts.Where(x => x.title.ToLower().Contains(title)).ToListAsync();
+            return posts;
+        }
+
         public async Task<Post> SelectPostByIdAsync(int id)
         {
             var post = await _db.posts.FirstOrDefaultAsync(x => x.postId == id);
