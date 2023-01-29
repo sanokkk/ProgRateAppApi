@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using Antoher.Helpers;
 
 namespace Antoher.Controllers
 {
@@ -29,11 +31,23 @@ namespace Antoher.Controllers
 
         [Route("SelectAll")]
         [HttpGet]
-        public IActionResult SelectAll()
+        public async Task<IActionResult> SelectAll(int pageNum = 1)
         {
-            var response = _db.posts.ToList();
-            //var response = _post.SelectAsync();
-            return Ok(response);
+            var response = await _db.posts.ToListAsync();
+            
+            response.Reverse();
+
+            int divider = 20;
+            var pages = response.Chunk(divider).ToList();
+            var resultPage = pages[pageNum - 1].ToList();
+
+            var pageDto = new PageDto()
+            {
+                page = resultPage,
+                pages = pages.Count
+            };
+
+            return Ok(pageDto);
         }
 
 
