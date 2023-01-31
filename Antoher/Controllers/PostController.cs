@@ -146,7 +146,7 @@ namespace Antoher.Controllers
                 return BadRequest();
             post.title = newPost.title;
             post.plot = newPost.plot;
-            await _post.UpdateAsync();
+            await _post.UpdateAsync(post);
             return Ok(post);
             
         }
