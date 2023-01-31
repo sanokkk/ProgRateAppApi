@@ -50,6 +50,8 @@ namespace Antoher
             services.AddScoped<ICommentRepo, CommentRepo>();
             services.AddScoped<ILikeRepo, LikeRepo>();
             services.AddScoped<IPostRepo, PostRepo>();
+            services.AddScoped<IRequestRepo, RequestRepo>();
+            services.AddScoped<IFriendRepo, FriendRepo>();
             #endregion
 
 
