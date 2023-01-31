@@ -58,9 +58,15 @@ namespace Antoher.DAL.Repos
             return posts;
         }
 
-        public async Task UpdateAsync(Post entity)
+        public async Task UpdateAsync()
         {
             await _db.SaveChangesAsync();
+        }
+
+        public async Task<Post> SelectByUserAndIdAsync(string userId, int postId)
+        {
+            var post = await _db.posts.FirstOrDefaultAsync(x => x.userId == userId && x.postId == postId);
+            return post;
         }
     }
 }

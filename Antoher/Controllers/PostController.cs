@@ -133,6 +133,24 @@ namespace Antoher.Controllers
             return Ok(posts);
         }
 
+        [HttpPost]
+        [Authorize]
+        [Route("UpdatePost")]
+        public async Task<IActionResult> UpdatePost([FromBody] CreatePost newPost, [FromQuery] int postId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var userId = User.Claims.First(x => x.Type == "UserID").Value;
+            var post = await _post.SelectByUserAndIdAsync(userId, postId);
+            if (post == null)
+                return BadRequest();
+            post.title = newPost.title;
+            post.plot = newPost.plot;
+            await _post.UpdateAsync();
+            return Ok(post);
+            
+        }
+
 
     }
 }

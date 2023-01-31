@@ -145,6 +145,7 @@ namespace Antoher.Controllers
 
                 user.UserName = model.UserName;
                 user.FullName = model.FullName;
+                user.Email = model.Email;
 
                 await _userManager.UpdateAsync(user);
                 await _db.SaveChangesAsync();

@@ -13,5 +13,9 @@ namespace Antoher.Domain.DTO
         [MinLength(10, ErrorMessage = "Минимальная длина имени - 10 символов")]
         [MaxLength(70, ErrorMessage = "Максимальная длина ника - 70 символов")]
         public string FullName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
     }
 }
