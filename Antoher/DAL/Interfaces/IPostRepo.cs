@@ -13,6 +13,6 @@ namespace Antoher.DAL.Interfaces
 
         Task<List<Post>> SelectByTitleAsync(string title);
         Task<Post> SelectByUserAndIdAsync(string userId, int postId);
-        Task UpdateAsync();
+        
     }
 }
