@@ -9,6 +9,6 @@ namespace Antoher.DAL.Interfaces
     {
         Task AddFriendAsync(Friend entity);
         Task<List<GetUserDto>> GetFriendsAsync(string userId);
-        public Task<bool> IsFriends(string firstUserId, string secondUserId);
+        public Task<bool> IsFriendsAsync(string firstUserId, string secondUserId);
     }
 }

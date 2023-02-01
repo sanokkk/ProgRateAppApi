@@ -47,7 +47,7 @@ namespace Antoher.DAL.Repos
             return friends;
         }
 
-        public async Task<bool> IsFriends(string firstUserId, string secondUserId)
+        public async Task<bool> IsFriendsAsync(string firstUserId, string secondUserId)
         {
             Friend friends = await _db.friends.FirstOrDefaultAsync(x => x.friendOne_id == firstUserId && x.friendTwo_id == secondUserId 
                                                                 || x.friendOne_id == secondUserId && x.friendTwo_id == firstUserId);

@@ -53,15 +53,15 @@ namespace Antoher.Controllers
                 return BadRequest();
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
         [Route("AddRequest")]
         public async Task<IActionResult> AddRequest([FromQuery] string targerUserId)
         {
             var userId = User.Claims.First(x => x.Type == "UserID").Value;
             if(userId == targerUserId)
                 return BadRequest();
-            if (await _freiends.IsFriends(userId, targerUserId) || await _requests.IsRequestedAsync(userId, targerUserId))
+            if (await _freiends.IsFriendsAsync(userId, targerUserId) && await _requests.IsRequestedAsync(userId, targerUserId))
                 return BadRequest("Уже в дркзьях / запросил дружбу");
             var request = new Request()
             {
