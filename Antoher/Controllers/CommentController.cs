@@ -17,11 +17,13 @@ namespace Antoher.Controllers
         private readonly ICommentRepo _db;
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
-        public CommentController(ICommentRepo db, UserManager<User> userManager, SignInManager<User> signInManager)
+        private readonly IPostRepo _post;
+        public CommentController(ICommentRepo db, UserManager<User> userManager, SignInManager<User> signInManager, IPostRepo post)
         {
             _db = db;
             _userManager = userManager;
             _signInManager = signInManager;
+            _post = post;
         }
 
         [HttpGet]
@@ -44,7 +46,7 @@ namespace Antoher.Controllers
                 var user = await _userManager.FindByIdAsync(userId);
 
                 //вытягиваем пост
-                var post = await _db.GetAsync(postId);
+                var post = await _post.GetAsync(postId);
 
                 //проверяем, есть ли такой пост
                 if (post == null)
