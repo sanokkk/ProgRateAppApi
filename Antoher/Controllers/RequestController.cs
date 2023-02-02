@@ -61,8 +61,10 @@ namespace Antoher.Controllers
             var userId = User.Claims.First(x => x.Type == "UserID").Value;
             if(userId == targerUserId)
                 return BadRequest();
-            if (await _freiends.IsFriendsAsync(userId, targerUserId) && await _requests.IsRequestedAsync(userId, targerUserId))
-                return BadRequest("Уже в дркзьях / запросил дружбу");
+            var check1 = await _freiends.IsFriendsAsync(userId, targerUserId);
+            var check2 = await _requests.IsRequestedAsync(userId, targerUserId);
+            if (await _freiends.IsFriendsAsync(userId, targerUserId) || await _requests.IsRequestedAsync(userId, targerUserId))
+                return BadRequest("Уже в друзьях / запросил дружбу");
             var request = new Request()
             {
                 issuer_id = userId,

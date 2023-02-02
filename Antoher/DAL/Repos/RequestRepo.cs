@@ -71,8 +71,8 @@ namespace Antoher.DAL.Repos
 
         public async Task<bool> IsRequestedAsync(string firstUserId, string secondUserId)
         {
-            var requests = await _db.requests.Where(x => x.issuer_id == firstUserId && x.target_id == secondUserId ||
-            x.target_id == firstUserId && x.issuer_id == secondUserId).ToListAsync();
+            var requests = await _db.requests.FirstOrDefaultAsync(x => x.issuer_id == firstUserId && x.target_id == secondUserId ||
+            x.target_id == firstUserId && x.issuer_id == secondUserId);
             if (requests != null)
                 return true;
             else
