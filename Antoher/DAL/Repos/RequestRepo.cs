@@ -63,6 +63,12 @@ namespace Antoher.DAL.Repos
             return requests;
         }
 
+        public Task<bool> IsIssuerAsync(string issuerId, Request request)
+        {
+            bool checker = (request.issuer_id == issuerId) ? true : false;
+            return Task.FromResult(checker);
+        }
+
         public async Task<bool> IsRequestedAsync(string firstUserId, string secondUserId)
         {
             var requests = await _db.requests.Where(x => x.issuer_id == firstUserId && x.target_id == secondUserId ||
@@ -71,7 +77,6 @@ namespace Antoher.DAL.Repos
                 return true;
             else
                 return false;
-
         }
     }
 }

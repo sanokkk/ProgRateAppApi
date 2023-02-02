@@ -91,6 +91,29 @@ namespace Antoher.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("DeleteRequest")]
+        [Authorize]
+        public async Task<IActionResult> DeleteRequest([FromQuery] int requestId)
+        {
+            var userId = User.Claims.First(x => x.Type == "UserID").Value;
+
+            var request = await _requests.GetByIdAsync(requestId);
+
+            if (request == null)
+                return NoContent();
+
+            if (await _requests.IsIssuerAsync(userId, request))
+            {
+                await _requests.DeleteRequestAsync(requestId);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
 
     }
 }

@@ -25,6 +25,16 @@ namespace Antoher.DAL.Repos
             await _db.SaveChangesAsync();
         }
 
+        public async Task DeleteFriendAsync(string friendOne, string friendTwo)
+        {
+            var pair = await _db.friends.FirstOrDefaultAsync(x => x.friendOne_id == friendOne && x.friendTwo_id == friendTwo 
+            || x.friendTwo_id == friendOne && x.friendOne_id == friendTwo);
+
+            _db.friends.Remove(pair);
+
+            await _db.SaveChangesAsync();
+        }
+
         public async Task<List<GetUserDto>> GetFriendsAsync(string userId)
         {
             var friends = new List<GetUserDto>();

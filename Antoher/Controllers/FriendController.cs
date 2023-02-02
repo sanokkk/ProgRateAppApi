@@ -34,5 +34,24 @@ namespace Antoher.Controllers
 
             return Ok(friends);
         }
+
+        [HttpPost]
+        [Route("DeleteFriend")]
+        [Authorize]
+        public async Task<IActionResult> DeleteFriend([FromQuery] string deletedId)
+        {
+            var userId = User.Claims.First(x => x.Type == "UserID").Value;
+
+            if (await _friends.IsFriendsAsync(userId, deletedId))
+            {
+                await _friends.DeleteFriendAsync(userId, deletedId);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+            
+        }
     }
 }
