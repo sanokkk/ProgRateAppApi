@@ -14,5 +14,6 @@ namespace Antoher.DAL.Interfaces
         Task<Request> GetByIdAsync(int id);
         Task<bool> IsRequestedAsync(string firstUserId, string secondUserId);
         Task<bool> IsIssuerAsync(string issuerId, Request request);
+        Task<List<Request>> GetIssuerRequests(string issuerId);
     }
 }

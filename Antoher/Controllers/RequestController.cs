@@ -116,6 +116,18 @@ namespace Antoher.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetIssuerRequests")]
+        [Authorize]
+        public async Task<IActionResult> GetIssuerRequests()
+        {
+            var userId = User.Claims.First(x => x.Type == "UserID").Value;
+
+            var requests = await _requests.GetIssuerRequests(userId);
+
+            return Ok(requests);
+        }
+
 
     }
 }

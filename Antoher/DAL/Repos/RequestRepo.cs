@@ -38,6 +38,12 @@ namespace Antoher.DAL.Repos
             return request;
         }
 
+        public async Task<List<Request>> GetIssuerRequests(string issuerId)
+        {
+            var requests = await _db.requests.Where(x => x.issuer_id == issuerId).ToListAsync();
+            return requests;
+        }
+
         public async Task<List<GetUserDto>> GetIssuersAsync(List<Request> requests)
         {
             var issuers = new List<GetUserDto>();
