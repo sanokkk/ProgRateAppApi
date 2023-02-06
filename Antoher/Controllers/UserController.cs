@@ -69,7 +69,8 @@ namespace Antoher.Controllers
                 {
                     Email = user.Email,
                     FullName = user.FullName,
-                    UserName = user.UserName
+                    UserName = user.UserName,
+                    PictureBase = user.PictureBase
                 };
                 return Ok(userDto);
             }
@@ -90,7 +91,8 @@ namespace Antoher.Controllers
                 UserName = user.UserName,
                 FullName = user.FullName,
                 Email = user.Email,
-                userId = user.Id
+                userId = user.Id,
+                PictureBase = user.PictureBase
             };
             return Ok(getUser);
         }
@@ -146,6 +148,7 @@ namespace Antoher.Controllers
                 user.UserName = model.UserName;
                 user.FullName = model.FullName;
                 user.Email = model.Email;
+                user.PictureBase = model.PictureBase;
 
                 await _userManager.UpdateAsync(user);
                 await _db.SaveChangesAsync();

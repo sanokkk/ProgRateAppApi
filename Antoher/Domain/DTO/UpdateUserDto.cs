@@ -17,5 +17,7 @@ namespace Antoher.Domain.DTO
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+
+        public string PictureBase { get; set; }
     }
 }

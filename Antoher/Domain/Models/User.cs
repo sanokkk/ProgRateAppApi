@@ -7,5 +7,6 @@ namespace Antoher.Domain.Models
     {
         [Column(TypeName ="varchar(150)")]
         public string FullName { get; set; }
+        public string PictureBase { get; set; }
     }
 }
