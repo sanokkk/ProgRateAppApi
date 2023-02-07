@@ -9,5 +9,7 @@ namespace Antoher.Domain.DTO
 
         [Required]
         public string plot { get; set; }
+
+        public string PictureBase { get; set; }
     }
 }

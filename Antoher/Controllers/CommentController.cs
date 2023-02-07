@@ -57,7 +57,8 @@ namespace Antoher.Controllers
                 {
                     message = model.message,
                     userId = userId,
-                    postId = postId
+                    postId = postId,
+                    PictureBase = model.PictureBase
                 };
                 await _db.AddAsync(comment);
                 return Ok(comment);

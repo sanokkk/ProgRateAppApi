@@ -7,5 +7,7 @@ namespace Antoher.Domain.DTO
         [Required]
         [MaxLength(500, ErrorMessage ="Максимальная длина комментария - 500 символов")]
         public string message { get; set; }
+
+        public string PictureBase { get; set; }
     }
 }

@@ -11,5 +11,7 @@
         public string plot { get; set; }
 
         public int likes { get; set; }
+
+        public string PictureBase { get; set; }
     }
 }

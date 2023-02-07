@@ -96,7 +96,8 @@ namespace Antoher.Controllers
                 userId = IdUser,
                 title = model.title,
                 plot = model.plot,
-                likes = 0
+                likes = 0,
+                PictureBase = model.PictureBase
             };
 
             await _post.AddAsync(post);
@@ -146,6 +147,7 @@ namespace Antoher.Controllers
                 return BadRequest();
             post.title = newPost.title;
             post.plot = newPost.plot;
+            post.PictureBase = newPost.PictureBase;
             await _post.UpdateAsync(post);
             return Ok(post);
             

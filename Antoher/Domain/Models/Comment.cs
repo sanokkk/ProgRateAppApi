@@ -13,5 +13,7 @@ namespace Antoher.Domain.Models
         public string userId { get; set; }
 
         public int postId { get; set; }
+
+        public string PictureBase { get; set; }
     }
 }
