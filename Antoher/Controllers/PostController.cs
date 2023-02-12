@@ -34,6 +34,8 @@ namespace Antoher.Controllers
         public async Task<IActionResult> SelectAll(int pageNum = 1)
         {
             var response = await _db.posts.ToListAsync();
+            if (response.Count == 0)
+                return Ok(response);
             
             response.Reverse();
 
