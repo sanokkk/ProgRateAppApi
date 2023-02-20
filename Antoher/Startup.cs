@@ -1,3 +1,4 @@
+using Antoher.Chat.Hubs;
 using Antoher.DAL;
 using Antoher.DAL.Interfaces;
 using Antoher.DAL.Repos;
@@ -5,6 +6,7 @@ using Antoher.Domain.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -96,6 +98,8 @@ namespace Antoher
                 };
             });
             #endregion
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -127,7 +131,10 @@ namespace Antoher
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chatsocket");
             });
+            
         }
+        
     }
 }
