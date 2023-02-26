@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-<<<<<<< Updated upstream
+
 using Microsoft.AspNetCore.HttpsPolicy;
-=======
->>>>>>> Stashed changes
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -107,13 +106,7 @@ namespace Antoher
                 };
             });
             #endregion
-<<<<<<< Updated upstream
-=======
 
-            
-
-            
->>>>>>> Stashed changes
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -149,13 +142,13 @@ namespace Antoher
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-<<<<<<< Updated upstream
-            });
-=======
                 endpoints.MapHub<ChatHub>("/hubs/chat");
             });
 
->>>>>>> Stashed changes
+                
+            
+
+
         }
     }
 }
