@@ -18,6 +18,10 @@ namespace Antoher.DAL
         public DbSet<Request> requests { get; set; }
         public DbSet<Friend> friends { get; set; }
 
+        public DbSet<ChatMessage> messages { get; set; }
+
+        public DbSet<ChatGroup> chatgroups { get; set; }
+
         //protected override void OnModelCreating(ModelBuilder builder)
         //{
         //    //builder.Entity<Friend>().ToTable("friends").HasKey(x => new { x.friendOne_id, x.friendTwo_id });

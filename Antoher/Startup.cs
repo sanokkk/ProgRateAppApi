@@ -2,17 +2,20 @@ using Antoher.DAL;
 using Antoher.DAL.Interfaces;
 using Antoher.DAL.Repos;
 using Antoher.Domain.Models;
+using Antoher.Hubs;
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+<<<<<<< Updated upstream
 using Microsoft.AspNetCore.HttpsPolicy;
+=======
+>>>>>>> Stashed changes
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
@@ -36,7 +39,13 @@ namespace Antoher
         
         public void ConfigureServices(IServiceCollection services)
         {
+        //    services.AddAuthentication(
+        //CertificateAuthenticationDefaults.AuthenticationScheme)
+        //.AddCertificate();
+
             services.AddControllers();
+
+            services.AddSignalR();
 
             services.AddRouting(x =>
             {
@@ -52,6 +61,8 @@ namespace Antoher
             services.AddScoped<IPostRepo, PostRepo>();
             services.AddScoped<IRequestRepo, RequestRepo>();
             services.AddScoped<IFriendRepo, FriendRepo>();
+            services.AddScoped<IChatRepo, ChatRepo>();
+            services.AddScoped<IGroupRepo, GroupRepo>();
             #endregion
 
 
@@ -96,6 +107,13 @@ namespace Antoher
                 };
             });
             #endregion
+<<<<<<< Updated upstream
+=======
+
+            
+
+            
+>>>>>>> Stashed changes
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,7 +124,8 @@ namespace Antoher
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseCookiePolicy();
 
             app.UseSwagger();
             app.UseSwaggerUI(o => o.SwaggerEndpoint(
@@ -120,14 +139,23 @@ namespace Antoher
 
             #region для клиента Андрея
 
-            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().WithOrigins("http://localhost:3000").AllowCredentials());
-
+            //app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().WithOrigins("http://localhost:3000").AllowCredentials());
+            app.UseCors(cors =>
+            {
+                cors.WithOrigins("http://localhost:3000").AllowCredentials().AllowAnyHeader().AllowAnyMethod();
+            });
             #endregion
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+<<<<<<< Updated upstream
             });
+=======
+                endpoints.MapHub<ChatHub>("/hubs/chat");
+            });
+
+>>>>>>> Stashed changes
         }
     }
 }

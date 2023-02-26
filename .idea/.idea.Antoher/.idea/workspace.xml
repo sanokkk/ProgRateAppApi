@@ -9,8 +9,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2d9795a-51ef-4487-ae3b-5fcf44e6a838" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Antoher/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Antoher/Controllers/PostController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Antoher/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Antoher/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Antoher/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Antoher/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Antoher/Antoher.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Antoher/Antoher.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Antoher/Chat/Dto/MessageDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Antoher/Chat/Hubs/ChatHub.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Antoher/Controllers/ChatController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Antoher/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Antoher/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Antoher/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Antoher/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +36,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -87,6 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674988256778</updated>
       <workItem from="1674988266960" duration="39000" />
+      <workItem from="1677140243312" duration="439000" />
     </task>
     <servers />
   </component>
