@@ -17,10 +17,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,7 +57,14 @@ namespace Antoher
                 x.LowercaseUrls = true;
             });
 
-            services.AddSwaggerGen(x => x.SwaggerDoc("v1", new OpenApiInfo() { Title = "ProgRate API", Version = "v1" }));
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new OpenApiInfo() { Title = "ProgRate API", Version = "v1" });
+                var path = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, path);
+                var options = new SwaggerGenOptions();
+                x.IncludeXmlComments(xmlPath);
+            });
 
             #region Скоупы для зависимостей контекста
             services.AddScoped<ICommentRepo, CommentRepo>();
@@ -128,9 +138,11 @@ namespace Antoher
             app.UseCookiePolicy();
 
             app.UseSwagger();
-            app.UseSwaggerUI(o => o.SwaggerEndpoint(
-                "/swagger/v1/swagger.json",
-                "v1"));
+            app.UseSwaggerUI(o => {
+                o.SwaggerEndpoint(
+                    "/swagger/v1/swagger.json",
+                    "v1");
+                });
 
             app.UseRouting();
 
