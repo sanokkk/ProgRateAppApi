@@ -2,6 +2,9 @@
 
 namespace Antoher.Domain.DTO
 {
+    /// <summary>
+    /// Дто для сообщения
+    /// </summary>
     public class MessageDto
     {
         [Required]

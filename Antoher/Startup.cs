@@ -27,7 +27,7 @@ using System.Threading.Tasks;
 namespace Antoher
 {
     /// <summary>
-    /// Класс, в котором добавляются все сервисы в DI контейнер и настраивается Pipeline для Middleware
+    /// Class for configuring all services for DI and inserting things in pipeline
     /// </summary>
     public class Startup
     {
@@ -38,11 +38,12 @@ namespace Antoher
 
         public IConfiguration Configuration { get; }
 
-        
+        /// <summary>
+        /// Adding services to ServiceCollection
+        /// </summary>
+        /// <param name="services">ServiceCollection - DI container</param>
         public void ConfigureServices(IServiceCollection services)
         {
-        
-
             services.AddControllers();
 
             services.AddSignalR();
@@ -111,6 +112,11 @@ namespace Antoher
         }
 
         
+        /// <summary>
+        /// Pipeline configuring
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

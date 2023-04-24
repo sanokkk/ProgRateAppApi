@@ -2,6 +2,9 @@
 
 namespace Antoher.Domain.DTO
 {
+    /// <summary>
+    /// Дто для создания поста
+    /// </summary>
     public class CreatePost
     {
         [Required]

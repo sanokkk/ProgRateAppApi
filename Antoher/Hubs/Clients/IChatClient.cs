@@ -4,9 +4,13 @@ using System.Threading.Tasks;
 
 namespace Antoher.Hubs.Clients
 {
+    /// <summary>
+    /// Интерфейс для хаба.
+    /// Нужен для абстракции (чтобы не хардкодить названия метода в классе хаба)
+    /// </summary>
     public interface IChatClient
     {
-        //Task ReceiveMessage(string message, string userName);
+        
         Task ReceiveMessage(MessDto message);
         Task Notify(string userName);
     }

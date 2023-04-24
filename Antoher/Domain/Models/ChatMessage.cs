@@ -1,5 +1,8 @@
 ﻿namespace Antoher.Domain.Models
 {
+    /// <summary>
+    /// Модель для сообщения чата
+    /// </summary>
     public class ChatMessage
     {
         public int Id { get; set; }

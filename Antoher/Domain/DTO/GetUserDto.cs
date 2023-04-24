@@ -1,5 +1,8 @@
 ﻿namespace Antoher.Domain.DTO
 {
+    /// <summary>
+    /// Дто для получения пользователя
+    /// </summary>
     public class GetUserDto
     {
         public string UserName { get; set; }

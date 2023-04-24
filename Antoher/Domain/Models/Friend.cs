@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Antoher.Domain.Models
 {
+    /// <summary>
+    /// Модель друга для списка друзей
+    /// </summary>
     public class Friend
     {
         [Key]

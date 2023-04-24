@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace Antoher.Controllers
 {
+    /// <summary>
+    /// Контроллер для чатов
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
 
@@ -21,14 +24,21 @@ namespace Antoher.Controllers
     {
         private readonly IChatRepo _chatRepo;
 
-
+        /// <summary>
+        /// Конструктор для инициализации репозитория через DI
+        /// </summary>
+        /// <param name="chatRepo">интерфейс IChatRepo</param>
         public ChatController(IChatRepo chatRepo)
         {
             _chatRepo = chatRepo;
         }
 
         
-
+        /// <summary>
+        /// Метод для получения всех сообщений группы из бд
+        /// </summary>
+        /// <param name="group">Название группы</param>
+        /// <returns>200 (Ok) - Список релевантных сообщений</returns>
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAsync([FromQuery] string group)
@@ -37,6 +47,13 @@ namespace Antoher.Controllers
             return Ok(messages);
         }
 
+
+        /// <summary>
+        /// Метод для отправки сообщений в группу
+        /// </summary>
+        /// <param name="message">Дто сообщения</param>
+        /// <param name="group">Название группы</param>
+        /// <returns>200 (Ok)</returns>
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody]MessageDto message, [FromQuery]string group)

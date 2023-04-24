@@ -2,10 +2,8 @@
 using Antoher.Domain.DTO;
 using Antoher.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,26 +11,35 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Helpers;
 
 namespace Antoher.Controllers
 {
+    /// <summary>
+    /// Контроллер для вазимодействия с сущностью пользователя
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private UserManager<User> _userManager;
-        private SignInManager<User> _signInManager;
         private readonly ApplicationDbContext _db;
-        private readonly IPasswordHasher<User> _passwordHasher;
-        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, ApplicationDbContext db, IPasswordHasher<User> passwordHasher)
+        /// <summary>
+        /// Конструктор для инициализации полей через DI
+        /// </summary>
+        /// <param name="userManager">Для Identity (содержит методы для сущности пользователя)</param>
+        /// <param name="db">Контекст БД</param>
+        public UserController(UserManager<User> userManager,  ApplicationDbContext db)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
             _db = db;
-            _passwordHasher = passwordHasher;
         }
 
+
+        /// <summary>
+        /// Метод регистрации
+        /// </summary>
+        /// <param name="model">Дто для регистрации из body</param>
+        /// <returns>В случае успеха - 200 (Ok), иначе 400 (BadRequest)</returns>
         [HttpPost]
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody]RegisterDto model)
@@ -53,7 +60,11 @@ namespace Antoher.Controllers
             return BadRequest();
         }
 
-
+        /// <summary>
+        /// Получение пользователя по айди
+        /// </summary>
+        /// <param name="Id">айди пользователя</param>
+        /// <returns>В случае успеха - 200 (Ok), иначе 400 (BadRequest)</returns>
         [HttpGet]
         [Route("GetUserById")]
         public async Task<IActionResult> GetUserById([FromQuery] string Id)
@@ -76,6 +87,10 @@ namespace Antoher.Controllers
             }
         }
 
+        /// <summary>
+        /// HTTP (GET) метод для получения данных о текущем авторизованном пользователе
+        /// </summary>
+        /// <returns>В случае успеха - 200 (Ok), иначе 401 (Unauthorized)</returns>
         [HttpGet]
         [Authorize]
         [Route("GetUser")]
@@ -97,7 +112,12 @@ namespace Antoher.Controllers
             return Ok(getUser);
         }
 
-
+        /// <summary>
+        /// Метод для авторизации
+        /// Генерируется jwt токен, создаются claims
+        /// </summary>
+        /// <param name="model">Дто для логина</param>
+        /// <returns>В случае успеха - 200 (Ok) с jwt токеном, иначе 400 (BadRequest)</returns>
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody]LoginDto model)
@@ -123,6 +143,10 @@ namespace Antoher.Controllers
         }
 
 
+        /// <summary>
+        /// Метод для удаления аккаунта у текущего пользователя
+        /// </summary>
+        /// <returns>В случае успеха - 200 (Ok), иначе 401 (Unauthorized)</returns>
         [HttpPost]
         [Authorize]
         [Route("DeleteUser")]
@@ -135,6 +159,11 @@ namespace Antoher.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Метод для обновления данных пользователя
+        /// </summary>
+        /// <param name="model">Дто юзера</param>
+        /// <returns>В случае успеха - 200 (Ok), иначе 401 (Unauthorized) или 400 (BadRequest), если не проходит валидация</returns>
         [HttpPost]
         [Authorize]
         [Route("UpdateUser")]
@@ -173,7 +202,7 @@ namespace Antoher.Controllers
 
                 var pwd = await _userManager.CheckPasswordAsync(user, model.OldPassword);
 
-                //var password = new string(Encoding.UTF8.GetBytes(user.PasswordHash).toCharArray);
+                
 
                 if (!pwd)
                 {
@@ -190,23 +219,5 @@ namespace Antoher.Controllers
             return BadRequest();
         }
 #endregion
-
-
-        #region Логаут не работает
-        [HttpPost]
-        [Route("Logout")]
-        [Authorize]
-        public async Task<IActionResult> LogOut()
-        {
-            var userId = User.Claims.First(x => x.Type == "UserID").Value;
-            var user = await _userManager.FindByIdAsync(userId);
-            await _userManager.UpdateSecurityStampAsync(user);
-            await _userManager.RemoveAuthenticationTokenAsync(user, "JWT", "JWT Token");
-            
-            
-            //HttpContext.Response.Cookies.Delete();
-            return Ok();
-        }
-        #endregion
     }
 }

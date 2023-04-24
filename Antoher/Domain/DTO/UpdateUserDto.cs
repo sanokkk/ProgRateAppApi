@@ -2,6 +2,9 @@
 
 namespace Antoher.Domain.DTO
 {
+    /// <summary>
+    /// Дто для обновления данных пользователя (имя, ник, почта, аватар)
+    /// </summary>
     public class UpdateUserDto
     {
         [Required]

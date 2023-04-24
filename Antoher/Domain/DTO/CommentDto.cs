@@ -2,6 +2,9 @@
 
 namespace Antoher.Domain.DTO
 {
+    /// <summary>
+    /// Дто для комментария
+    /// </summary>
     public class CommentDto
     {
         [Required]

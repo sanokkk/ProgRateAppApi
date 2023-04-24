@@ -9,13 +9,23 @@ using System.Threading.Tasks;
 
 namespace Antoher
 {
+    /// <summary>
+    /// Class which creates and runs host
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Host starting
+        /// </summary>
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
         }
 
+
+        /// <summary>
+        /// Host creating
+        /// </summary>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

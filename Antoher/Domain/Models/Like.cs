@@ -1,5 +1,8 @@
 ﻿namespace Antoher.Domain.Models
 {
+    /// <summary>
+    /// Модель для хранения лайка к посту
+    /// </summary>
     public class Like
     {
         public int likeId { get; set; }
