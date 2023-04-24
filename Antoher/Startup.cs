@@ -26,6 +26,9 @@ using System.Threading.Tasks;
 
 namespace Antoher
 {
+    /// <summary>
+    /// Класс, в котором добавляются все сервисы в DI контейнер и настраивается Pipeline для Middleware
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)
