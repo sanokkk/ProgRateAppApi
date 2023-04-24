@@ -38,9 +38,7 @@ namespace Antoher
         
         public void ConfigureServices(IServiceCollection services)
         {
-        //    services.AddAuthentication(
-        //CertificateAuthenticationDefaults.AuthenticationScheme)
-        //.AddCertificate();
+        
 
             services.AddControllers();
 
@@ -109,7 +107,7 @@ namespace Antoher
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -132,10 +130,10 @@ namespace Antoher
 
             #region для клиента Андрея
 
-            //app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().WithOrigins("http://localhost:3000").AllowCredentials());
+            
             app.UseCors(cors =>
             {
-                cors.WithOrigins("http://localhost:3000").AllowCredentials().AllowAnyHeader().AllowAnyMethod();
+                cors.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed(origin => true).AllowCredentials();
             });
             #endregion
 

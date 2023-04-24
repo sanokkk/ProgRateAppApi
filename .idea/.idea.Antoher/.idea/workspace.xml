@@ -10,11 +10,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f2d9795a-51ef-4487-ae3b-5fcf44e6a838" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Antoher/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Antoher/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Antoher/Antoher.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Antoher/Antoher.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Antoher/Chat/Dto/MessageDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Antoher/Chat/Hubs/ChatHub.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Antoher/Controllers/ChatController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Antoher/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Antoher/Properties/launchSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Antoher/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Antoher/Startup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,15 +26,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Antoher">
     <configuration name="Antoher: registry.hub.docker.com_sanokkk" type="DotNetMsBuildPublish" factoryName="Publish to IIS">
       <riderPublish publish_profile="registry.hub.docker.com_sanokkk.pubxml" pubxml_path="$PROJECT_DIR$/Antoher/Properties/PublishProfiles/registry.hub.docker.com_sanokkk.pubxml" user_name="sanokkk" uuid_high="4922000543029215631" uuid_low="-5581158028009032564" />
@@ -94,6 +89,7 @@
       <updated>1674988256778</updated>
       <workItem from="1674988266960" duration="39000" />
       <workItem from="1677140243312" duration="439000" />
+      <workItem from="1677941695848" duration="611000" />
     </task>
     <servers />
   </component>
